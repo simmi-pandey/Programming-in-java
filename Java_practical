@@ -1,0 +1,184 @@
+1)Create a class Product with properties(itemNo,name,price,quantity) and methods(Constructor,setters and getters and toString method). Create 5 objects using array of objects concepts and print the object details using toString method.
+class Product {
+    int itemNo;
+    String name;
+    double price;
+    int quantity;
+
+    // Constructor
+    Product(int itemNo, String name, double price, int quantity) {
+        this.itemNo = itemNo;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    // Setters
+    public void setName(String name) { this.name = name; }
+    public void setPrice(double price) { this.price = price; }
+    public void setQuantity(int quantity) { this.quantity = quantity; }
+
+    // Getters
+    public int getItemNo() { return itemNo; }
+    public String getName() { return name; }
+    public double getPrice() { return price; }
+    public int getQuantity() { return quantity; }
+
+
+
+    // toString Method
+    public String toString() {
+        return "ItemNo: " + itemNo + ", Name: " + name + ", Price: " + price + ", Quantity: " + quantity;
+    }
+}
+
+ class ProductMain {
+    public static void main(String[] args) {
+        Product[] products = new Product[5];
+        products[0] = new Product(101, "Pen", 10.0, 100);
+        products[1] = new Product(102, "Pencil", 5.0, 150);
+        products[2] = new Product(103, "Notebook", 50.0, 60);
+        products[3] = new Product(104, "Eraser", 3.0, 200);
+        products[4] = new Product(105, "Sharpener", 7.0, 120);
+
+        for (Product p : products) {
+            System.out.println(p);
+  }
+ }
+}
+
+2) Create a class Customer with properties(custId,name,address,phoneNo) and methods(Constructor,setters and getters and toString method). Create 5 objects using array of objects concepts and print the object details using toString method.
+
+class CustomerMain {
+    public static void main(String[] args) {
+        // Creating array of Customer objects
+        Customer[] customers = new Customer[5];
+
+        customers[0] = new Customer(1, "Alice", "Delhi", "9876543210");
+        customers[1] = new Customer(2, "Bob", "Mumbai", "8765432109");
+        customers[2] = new Customer(3, "Charlie", "Bangalore", "7654321098");
+        customers[3] = new Customer(4, "David", "Kolkata", "6543210987");
+        customers[4] = new Customer(5, "Eva", "Chennai", "5432109876");
+
+        // Printing customer details using toString()
+        System.out.println("=== Customer Details ===");
+        for (Customer c : customers) {
+            System.out.println(c);
+        }
+    }
+}
+
+// Customer class
+class Customer {
+    private int custId;
+    private String name;
+    private String address;
+    private String phoneNo;
+
+    // Constructor
+    public Customer(int custId, String name, String address, String phoneNo) {
+        this.custId = custId;
+        this.name = name;
+        this.address = address;
+        this.phoneNo = phoneNo;
+    }
+
+    // Setters
+    public void setCustId(int custId) { this.custId = custId; }
+    public void setName(String name) { this.name = name; }
+    public void setAddress(String address) { this.address = address; }
+    public void setPhoneNo(String phoneNo) { this.phoneNo = phoneNo; }
+
+    // Getters
+    public int getCustId() { return custId; }
+    public String getName() { return name; }
+    public String getAddress() { return address; }
+    public String getPhoneNo() { return phoneNo; }
+
+    // toString method
+    @Override
+    public String toString() {
+        return "Customer [ID=" + custId + ", Name=" + name + ", Address=" + address + ", Phone=" + phoneNo + "]";
+    }
+}
+
+3) Create a Parent class Account with properties(accNo,name, address, phoneNo, dob, balance) and methods(Constructor,setters and getters). Create a Derived class SavingAccount with methods(deposit() and withdraw() ). Create a main method to create the object and implement the Deposit and Withdraw method.
+class AccountMain {
+    public static void main(String[] args) {
+        // Create a SavingAccount object
+        SavingAccount sa = new SavingAccount(
+                1001, "John Doe", "New York", "9876543210",
+                "1990-01-01", 5000.0
+        );
+
+        // Perform deposit and withdraw
+        System.out.println("Initial Balance: " + sa.getBalance());
+
+        sa.deposit(2000.0);    // Add money
+        sa.withdraw(1500.0);   // Withdraw money
+        sa.withdraw(6000.0);   // Try to withdraw more than balance
+    }
+}
+
+// Parent Class: Account
+class Account {
+    protected int accNo;
+    protected String name;
+    protected String address;
+    protected String phoneNo;
+    protected String dob;
+    protected double balance;
+
+    // Constructor
+    public Account(int accNo, String name, String address,
+                   String phoneNo, String dob, double balance) {
+        this.accNo = accNo;
+        this.name = name;
+        this.address = address;
+        this.phoneNo = phoneNo;
+        this.dob = dob;
+        this.balance = balance;
+    }
+
+    // Setters
+    public void setAccNo(int accNo) { this.accNo = accNo; }
+    public void setName(String name) { this.name = name; }
+    public void setAddress(String address) { this.address = address; }
+    public void setPhoneNo(String phoneNo) { this.phoneNo = phoneNo; }
+    public void setDob(String dob) { this.dob = dob; }
+    public void setBalance(double balance) { this.balance = balance; }
+
+    // Getters
+    public int getAccNo() { return accNo; }
+    public String getName() { return name; }
+    public String getAddress() { return address; }
+    public String getPhoneNo() { return phoneNo; }
+    public String getDob() { return dob; }
+    public double getBalance() { return balance; }
+}
+
+// Child Class: SavingAccount
+class SavingAccount extends Account {
+    public SavingAccount(int accNo, String name, String address,
+                         String phoneNo, String dob, double balance) {
+        super(accNo, name, address, phoneNo, dob, balance);
+    }
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited: " + amount + " | New Balance: " + balance);
+        } else {
+            System.out.println("Deposit amount must be positive.");
+        }
+    }
+
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrawn: " + amount + " | New Balance: " + balance);
+        } else {
+            System.out.println("Insufficient balance or invalid amount.");
+        }
+    }
+}
