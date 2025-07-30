@@ -1,0 +1,172 @@
+1)Grade Calculator with Multiple Decision Points:
+
+import java.util.Scanner;
+
+    public class GradeCalculator {
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Enter your percentage: ");
+            double marks = sc.nextDouble();
+
+            String grade;
+
+            if (marks >= 90) {
+                grade = "A+";
+            } else if (marks >= 80) {
+                grade = "A";
+            } else if (marks >= 70) {
+                grade = "B";
+            } else if (marks >= 60) {
+                grade = "C";
+            } else if (marks >= 50) {
+                grade = "D";
+            } else {
+                grade = "F";
+            }
+
+            System.out.println("Your grade is: " + grade);
+            sc.close();
+        }
+
+2)Pattern Printing with Nested Loops
+ import java.util.Scanner;
+
+    public class PatternPrinting {
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            System.out.print("Enter number of rows: ");
+            int rows = sc.nextInt();
+
+            // Right-angled triangle
+            System.out.println("Right-angled triangle:");
+            for (int i = 1; i <= rows; i++) {
+                for (int j = 1; j <= i; j++) {
+                    System.out.print("* ");
+                }
+                System.out.println();
+            }
+
+            // Pyramid
+            System.out.println("Pyramid pattern:");
+            for (int i = 1; i <= rows; i++) {
+                for (int j = 1; j <= rows - i; j++) {
+                    System.out.print(" ");
+                }
+                for (int j = 1; j <= i; j++) {
+                    System.out.print("* ");
+                }
+                System.out.println();
+            }
+
+            sc.close();
+        }
+    }
+
+3)Classes and Objects :
+	i. Student Management System:
+ public class Student {
+        String name;
+        int rollNo;
+        String grade;
+
+        public Student(String name, int rollNo, String grade) {
+            this.name = name;
+            this.rollNo = rollNo;
+            this.grade = grade;
+        }
+
+        public void display() {
+            System.out.println("Name: " + name);
+            System.out.println("Roll No: " + rollNo);
+            System.out.println("Grade: " + grade);
+        }
+
+        public static void main(String[] args) {
+            Student s1 = new Student("Alice", 101, "A");
+            Student s2 = new Student("Bob", 102, "B");
+
+            s1.display();
+            System.out.println("---");
+            s2.display();
+        }
+    }
+
+ii. Bank Account Management System:
+ public class BankAccount {
+        String accountHolder;
+        double balance;
+
+        public BankAccount(String accountHolder, double balance) {
+            this.accountHolder = accountHolder;
+            this.balance = balance;
+        }
+
+        public void deposit(double amount) {
+            balance += amount;
+            System.out.println("Deposited: " + amount + ", New Balance: " + balance);
+        }
+
+        public void withdraw(double amount) {
+            if (amount > balance) {
+                System.out.println("Insufficient balance!");
+            } else {
+                balance -= amount;
+                System.out.println("Withdrawn: " + amount + ", Remaining Balance: " + balance);
+            }
+        }
+
+        public void display() {
+            System.out.println("Account Holder: " + accountHolder);
+            System.out.println("Balance: " + balance);
+        }
+
+        public static void main(String[] args) {
+            BankAccount acc = new BankAccount("John Doe", 1000.0);
+            acc.display();
+            acc.deposit(500);
+            acc.withdraw(300);
+        }
+    }
+
+4)Complex Number Operations with Constructor Overloading:
+
+public class Complex {
+        int real;
+        int imag;
+
+        // Default constructor
+        public Complex() {
+            this.real = 0;
+            this.imag = 0;
+        }
+
+        // Parameterized constructor
+        public Complex(int real, int imag) {
+            this.real = real;
+            this.imag = imag;
+        }
+
+        public Complex add(Complex c) {
+            return new Complex(this.real + c.real, this.imag + c.imag);
+        }
+
+        public void display() {
+            System.out.println(real + " + " + imag + "i");
+        }
+
+        public static void main(String[] args) {
+            Complex c1 = new Complex(3, 4);
+            Complex c2 = new Complex(5, -2);
+            Complex c3 = c1.add(c2);
+
+            System.out.println("First Complex Number:");
+            c1.display();
+
+            System.out.println("Second Complex Number:");
+            c2.display();
+
+            System.out.println("Sum of Complex Numbers:");
+            c3.display();
+        }
+    }
+    }
